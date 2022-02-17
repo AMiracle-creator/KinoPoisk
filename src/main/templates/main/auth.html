@@ -1,0 +1,41 @@
+{% extends 'main/layout/baseAuth.html' %}
+{% load static %}
+{% block content %}
+<div class="page" id="page">
+    <section class="auth">
+        <div class="auth__bg"></div>
+        <div class="auth__inner">
+            <a href="#" class="btn__back">
+                <svg class="arrow__left-symbol">
+                    <use xlink:href="#arrow-left"></use>
+                </svg>
+            </a>
+            <div class="auth__logo">
+                <div class="auth__logo-inner">
+                    <img src="{% static '/images/header/logo-1x.png' %}" alt="" class="auth__logo-img">
+                </div>
+            </div>
+            <div class="auth__welcome">
+                <div class="auth__welcome-title">Войти</div>
+            </div>
+            <form action="" class="login__form" method="post">
+                {% csrf_token %}
+                <div class="input__group">
+                    <input type="text" id="username" name="email" class="input__field"
+                           placeholder="Введите почту или логин">
+                    {% if error %}
+                        <div class="input__error">Неверный логин</div>
+                    {% endif %}
+                </div>
+                <div class="input__group">
+                    <input type="password" id="password" name="password" class="input__field" placeholder="Введите пароль">
+                    {% if error %}
+                        <div class="input__error">Неверный пароль</div>
+                    {% endif %}
+                </div>
+                <button type="submit" class="auth__login-btn">Войти</button>
+            </form>
+        </div>
+    </section>
+</div>
+{% endblock %}

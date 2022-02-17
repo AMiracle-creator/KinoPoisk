@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Useful meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Home</title>
+</head>
+<body>
+
+{% include 'main/sprite/sprite.html' %}
+
+
+<div class="page" id="page">
+    {% include 'main/partials/header.html' %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% include 'main/partials/footer.html' %}
+</div>
+
+
+<script>
+    const mainPage = document.querySelector('#page');
+    const menu = document.querySelector(".burger");
+    const closeBtn = document.querySelector(".close__block");
+    const links = document.querySelector("#links");
+    const allLinks = document.querySelectorAll(".nav__link-item");
+    const header = document.querySelector('#header');
+    const btnProfile = document.querySelector('.header__profile--svg');
+    const profileContent = document.querySelector('.header__profile-content');
+
+    const allFilterMovies = document.querySelectorAll(".movies__filter-item");
+    const openMenu = () => {
+        if (links.className.includes("open")) {
+            links.classList.remove('open');
+            allLinks.forEach((item) => {
+                item.classList.remove("fade");
+            });
+            mainPage.classList.remove("overflow-hidden");
+        } else {
+            links.classList.add('open');
+            allLinks.forEach((item) => {
+                item.classList.add("fade");
+            });
+            mainPage.classList.add("overflow-hidden");
+        }
+    };
+
+    const closeMenu = () => {
+        if (links.className.includes("open")) {
+            links.classList.remove('open');
+            allLinks.forEach((item) => {
+                item.classList.remove("fade");
+            });
+            mainPage.classList.remove("overflow-hidden");
+        }
+    };
+
+    const tooltips = () => {
+        profileContent.classList.toggle('vis');
+    };
+
+
+    menu.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", closeMenu);
+    allLinks.forEach((item) => {
+        item.addEventListener("click", closeMenu);
+    });
+    allFilterMovies.forEach((item) => {
+        item.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (!e.target.getAttribute('class').includes('filter-active')) {
+                allFilterMovies.forEach((i) => {
+                    i.classList.remove('filter-active');
+                });
+                this.classList.add('filter-active');
+            }
+        });
+    });
+    btnProfile.addEventListener("click", tooltips);
+
+
+    const allFilterLabel = document.querySelectorAll('.filter__label');
+    const allFilterField = document.querySelectorAll('.field__filter');
+    const countryItems = document.querySelectorAll('.country-item');
+    const genreItems = document.querySelectorAll('.genre-item');
+    const yearItems = document.querySelectorAll('.year-item');
+
+    allFilterLabel.forEach(
+        (item) => {
+            item.addEventListener("click", function (e) {
+                e.preventDefault();
+                if (!e.target.getAttribute('class').includes('act-label')) {
+                    this.classList.add('act-label');
+                    this.nextElementSibling.classList.add('act-display');
+                } else {
+                    this.classList.remove('act-label');
+                    this.nextElementSibling.classList.remove('act-display');
+                    this.nextElementSibling.firstElementChild.classList.remove('act-filter');
+                    this.nextElementSibling.childNodes[3].classList.remove('active__filter-item');
+                }
+            });
+        });
+
+    allFilterField.forEach(
+        (item) => {
+            item.addEventListener("click", function (e) {
+                if (!e.target.getAttribute('class').includes('act-filter')) {
+                    allFilterField.forEach((i) => {
+                        i.classList.remove('act-filter');
+                        i.nextElementSibling.classList.remove('active__filter-item');
+                    });
+                    this.classList.add('act-filter');
+                    this.nextElementSibling.classList.add('active__filter-item');
+                } else {
+                    this.classList.remove('act-filter');
+                    this.nextElementSibling.classList.remove('active__filter-item');
+                }
+            })
+        });
+
+    countryItems.forEach(
+        (item) => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (!e.target.getAttribute('class').includes('active__filter-field')) {
+                    countryItems.forEach(
+                        (i) => {
+                            i.classList.remove('active__filter-field');
+                        });
+                    this.classList.add('active__filter-field');
+                    allFilterField.item(0).childNodes[0].textContent = e.target.textContent.trim();
+                    allFilterField.item(0).childNodes[1].value = e.target.textContent.trim();
+                    allFilterField.item(0).nextElementSibling.classList.remove('active__filter-item');
+                    allFilterField.item(0).classList.remove('act-filter');
+                }
+            })
+        });
+
+    genreItems.forEach(
+        (item) => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (!e.target.getAttribute('class').includes('active__filter-field')) {
+                    genreItems.forEach(
+                        (i) => {
+                            i.classList.remove('active__filter-field');
+                        });
+                    this.classList.add('active__filter-field');
+                    allFilterField.item(1).childNodes[0].textContent = e.target.textContent.trim();
+                    allFilterField.item(1).childNodes[1].value = e.target.textContent.trim();
+                    allFilterField.item(1).nextElementSibling.classList.remove('active__filter-item');
+                    allFilterField.item(1).classList.remove('act-filter');
+                }
+            })
+        });
+
+    yearItems.forEach(
+        (item) => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (!e.target.getAttribute('class').includes('active__filter-field')) {
+                    yearItems.forEach(
+                        (i) => {
+                            i.classList.remove('active__filter-field');
+                        });
+                    this.classList.add('active__filter-field');
+                    allFilterField.item(2).childNodes[0].textContent = e.target.textContent.trim();
+                    allFilterField.item(2).childNodes[1].value = e.target.textContent.trim();
+                    allFilterField.item(2).nextElementSibling.classList.remove('active__filter-item');
+                    allFilterField.item(2).classList.remove('act-filter');
+                }
+            })
+        });
+</script>
+</body>
+</html>

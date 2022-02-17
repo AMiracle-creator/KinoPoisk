@@ -1,0 +1,73 @@
+{% load static %}
+<header class="header" id="header">
+    <div class="header__inner">
+        <div class="menu__part">
+            <div class="logo">
+                <img src="{% static 'images/header/logo-1x.png' %}" alt="" class="logo__img">
+            </div>
+            <button type="button" class="burger">
+                <svg class="menu-symbol">
+                    <use xlink:href="#menu"></use>
+                </svg>
+            </button>
+        </div>
+        <div class="header__social-part">
+            <div class="header__profile-block">
+                <button type="button" class="header__profile header__profile--svg">
+                    <svg class="profile-symbol">
+                        <use xlink:href="#profile"></use>
+                    </svg>
+                </button>
+                <div class="header__profile-content">
+                    <div class="header__profile-content--inner">
+                        <div class="header__profile-username">
+                            Добро пожаловать,
+                            <span>Иван Иванович</span>
+                        </div>
+                        <a href="{% url 'profile' id=request.user.id %}" class="header__profile-item">Профиль</a>
+                        <a href="{% url 'profileFilms' %}" class="header__profile-item">Фильмы</a>
+                        <a href="{% url 'profileFilms' %}" class="header__profile-item">Рецензии</a>
+                        <a href="{% url 'profileFilms' %}" class="header__profile-item">Выйти</a>
+                    </div>
+                </div>
+            </div>
+            <!--            <button class="header__profile">-->
+            <!--                Войти-->
+            <!--            </button>-->
+            <div class="header__line"></div>
+            <div class="header__social">
+                <a href="#" class="header__social-telegram">
+                    <svg class="telegram-symbol">
+                        <use xlink:href="#telegram"></use>
+                    </svg>
+                </a>
+                <a href="#" class="header__social-instagram">
+                    <svg class="instagram-symbol">
+                        <use xlink:href="#instagram"></use>
+                    </svg>
+                </a>
+                <a href="#" class="header__social-youtube">
+                    <svg class="youtube-symbol">
+                        <use xlink:href="#youtube"></use>
+                    </svg>
+                </a>
+                <div class="header__line-right"></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="links" id="links">
+        <button type="button" class="close__block">
+            <svg class="close-symbol">
+                <use xlink:href="#close"></use>
+            </svg>
+        </button>
+        <ul class="nav">
+            <li class="nav__link"><a href="{% url 'home' %}" class="nav__link-item">Home</a></li>
+            <li class="nav__link"><a href="{% url 'allFilms' %}" class="nav__link-item">All films</a></li>
+            <li class="nav__link"><a href="{% url 'about' %}" class="nav__link-item">About</a></li>
+            <li class="nav__link"><a href="{% url 'contacts' %}" class="nav__link-item">Contact</a></li>
+            <li class="nav__link"><a href="{% url 'contacts' %}" class="nav__link-item">News</a></li>
+        </ul>
+    </div>

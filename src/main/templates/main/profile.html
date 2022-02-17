@@ -1,0 +1,52 @@
+{% extends 'main/layout/base.html' %}
+{% load static %}
+{% block content %}
+<section class="profile">
+    <div class="profile__inner">
+        <div class="profile__header">
+            <h2 class="profile__title">Ваш профиль</h2>
+            <p class="profile__header-desc">Здесь вы можете редактировать и настраивать ваш профиль</p>
+        </div>
+
+        <div class="profile__body">
+            <div class="profile__body-inner">
+                <div class="profile__photo">
+                    <img src="{% static '/images/profile/avatarProfile.jpg' %}" alt="" class="profile__img">
+                </div>
+                <ul class="profile__info">
+                    <li class="profile__info-item profile__name"><span>ФИО:</span>
+                        <span>Иван Иванович</span></li>
+                    <li class="profile__info-item profile__date"><span>Регистрация:</span>
+                        <span>21 февраля 2021</span></li>
+                    <li class="profile__info-item profile__country"><span>Страна:</span>
+                        <span>Russian</span>
+                    </li>
+                </ul>
+            </div>
+            <a href="{% url 'editProfile' %}" class="btn__change-data">Изменить данные</a>
+        </div>
+
+        <div class="profile__stat">
+            <div class="profile__stat-item">
+                <div class="profile__stat-count">10</div>
+                <div class="profile__stat-name">Фильмы</div>
+            </div>
+
+            <div class="profile__stat-item">
+                <div class="profile__stat-count">10</div>
+                <div class="profile__stat-name">Комментарии</div>
+            </div>
+
+            <div class="profile__stat-item">
+                <div class="profile__stat-count">10</div>
+                <div class="profile__stat-name">Рецензии</div>
+            </div>
+
+            <div class="profile__stat-item">
+                <div class="profile__stat-count">10</div>
+                <div class="profile__stat-name">Любимые фильмы</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

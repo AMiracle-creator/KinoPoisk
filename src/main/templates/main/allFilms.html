@@ -1,0 +1,143 @@
+{% extends 'main/layout/baseAllFilms.html' %}
+{% load static %}
+{% block content %}
+    <section class="contact--title">
+        <div class="contact__bg--allFilm"></div>
+        <div class="contact--title-inner">
+            <div class="contact__inner-title">All Films</div>
+            <div class="contact__inner-subtitle">
+                <a href="{% url 'home' %}">Home</a>
+                <div class="contact__line">/</div>
+                <div>All Films</div>
+            </div>
+        </div>
+    </section>
+    <section class="allFilms">
+        <div class="allFilms__inner">
+            <div class="all__films-filter">
+                <div class="filter__tag">
+                    <a href="#" class="filter__tag-item">C высоким рейтингом</a>
+                    <a href="#" class="filter__tag-item">Российские</a>
+                    <a href="#" class="filter__tag-item">Заружебные</a>
+                    <a href="#" class="filter__tag-item">Недавно вышедшие</a>
+                    <a href="#" class="filter__tag-item">Скрыть просмотренные</a>
+                </div>
+                <form action="" method="post" class="filters">
+                    <div class="filter__group">
+                        <a href="#" class="filter__label">Поиск</a>
+                        <div class="filter__field-country">
+                            <input class="search__filter" type="text" name="search" placeholder="Поиск...">
+                        </div>
+                    </div>
+                    <div class="filter__group">
+                        <a href="#" class="filter__label">Страны</a>
+                        <div class="filter__field-country">
+                            <div class="field__filter field__filter--country">
+                                Все страны
+                                <input type="hidden" name="filter-country" value="Все страны">
+                            </div>
+                            <div class="filter__field-items">
+                                <a href="#" class="filter__field-item country-item active__filter-field">
+                                    Все страны
+                                </a>
+
+                                <a href="#" class="filter__field-item country-item">
+                                    Россия
+                                </a>
+
+                                <a href="#" class="filter__field-item country-item">
+                                    Украина
+                                </a>
+
+                                <a href="#" class="filter__field-item country-item">
+                                    Сша
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter__group">
+                        <div class="filter__label">Жанры</div>
+                        <div class="filter__field-country">
+                            <div class="field__filter field__filter--genre">
+                                Все жанры
+                                <input type="hidden" name="filter-genre" value="Все жанры">
+                            </div>
+                            <div class="filter__field-items">
+                                <a href="#" class="filter__field-item active__filter-field genre-item">
+                                    Все жанры
+                                </a>
+
+                                <a href="#" class="filter__field-item genre-item">
+                                    Ужасы
+                                </a>
+
+                                <a href="#" class="filter__field-item genre-item">
+                                    История
+                                </a>
+
+                                <a href="#" class="filter__field-item genre-item">
+                                    ПРиключения
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter__group">
+                        <div class="filter__label">Года</div>
+                        <div class="filter__field-country">
+                            <div class="field__filter field__filter--years">
+                                Все года
+                                <input type="hidden" name="filter-years" value="Все года">
+                            </div>
+                            <div class="filter__field-items">
+                                <a href="#" class="filter__field-item active__filter-field year-item">
+                                    Все года
+                                </a>
+
+                                <a href="#" class="filter__field-item year-item">
+                                    2021
+                                </a>
+
+                                <a href="#" class="filter__field-item year-item">
+                                    2020
+                                </a>
+
+                                <a href="#" class="filter__field-item year-item">
+                                    2019
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn__filter" type="button">Применить</button>
+                </form>
+            </div>
+            <div class="all__films-films">
+                {% for item in object_list %}
+                <div class="films__item">
+                    <div class="films__number">
+                        <span class="films__count">1</span>
+                    </div>
+                    <a href="{% url 'singleFilm' item.id %}" class="film__photo">
+                        <img src="{% static 'images/allFilms/friend.webp' %}" alt="" class="allfilm__img">
+                        <span class="films__img-rating">8.6</span>
+                    </a>
+                    <div class="film__info-filter">
+                        <a href="#" class="film__info-left">
+                            <p class="film__info-name">
+                                {{ item.name }}
+                            </p>
+                            <p class="film__info-date">
+                                {{ item.genre }}
+                            </p>
+                            <p class="film__info-metaInfo">
+                                <span class="film__info-country">{{ item.country }}</span>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+             {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

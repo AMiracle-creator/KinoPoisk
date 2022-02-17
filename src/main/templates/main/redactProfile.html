@@ -1,0 +1,31 @@
+{% extends 'main/layout/base.html' %}
+{% load static %}
+
+{% block content%}
+    <section class="profile">
+        <div class="profile__inner">
+            <form class="profile__body" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="profile__photo">
+                    <img name="Img" src="assets/images/profile/user-no-big.gif" alt="" class="profile__img">
+                    {{ form.img }}
+                </div>
+                <ul class="profile__info profile__info-group--change">
+                    <li class="profile__info-group">
+                        <label name="Name" class="profile__info-label">
+                            Имя:
+                            {{ form.name }}
+                        </label>
+                    </li>
+                    <li class="profile__info-group">
+                        <label name="Email" class="profile__info-label">
+                            Email:
+                            {{ form.email }}
+                        </label>
+                    </li>
+                </ul>
+                <button type="submit" class="btn__change-data">Изменить данные</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}
