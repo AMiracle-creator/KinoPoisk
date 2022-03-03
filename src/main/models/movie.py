@@ -29,8 +29,8 @@ class Movie(BaseModel):
     world_premiere = models.CharField(max_length=255, verbose_name='мировая примьера')
     img = models.ImageField(upload_to='movies_img/', verbose_name='изображение')
     overview = models.TextField(verbose_name='обзор')
-    tag = models.ManyToManyField('main.Tag', null=True, blank=True)
-    favorite_movies = models.ManyToManyField('main.KinopoiskUser', null=True, blank=True)
+    tag = models.ManyToManyField('main.Tag', blank=True)
+    favorite_movies = models.ManyToManyField('main.KinopoiskUser', blank=True)
 
     class Meta:
         verbose_name = 'Фильм'
