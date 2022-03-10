@@ -29,11 +29,11 @@ jobs:
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_TOKEN }} 
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
       - uses: actions/checkout@v2
       - name: Build Docker Python Image
-        run: docker image build . --file Dockerfile --tag kinopoisk
+        run: docker image build . --file Dockerfile --tag amiraclecreator/kinopoisk:latest
 
       - name: Push Docker Python Image
-        run: docker image push kinopoisk
+        run: docker image push amiraclecreator/kinopoisk:latest
