@@ -16,6 +16,8 @@ services:
       - DEBUG=True
     depends_on:
         - db
+    ports:
+      - "3000"
 
   db:
     image: postgres:11.1-alpine
