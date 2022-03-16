@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     command:
-      bash -c "python src/manage.py test api"
+      bash -c "python src/manage.py test main"
     environment:
       - POSTGRES_DATABASE_NAME=kinopoisk
       - POSTGRES_USER=postgres
