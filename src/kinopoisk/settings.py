@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': "kinopoisk",
         'PASSWORD': "root",
         'USER': "root",
-        'HOST': "db",
+        'HOST': "127.0.0.1",
         "PORT": "5432"
         # 'NAME': os.environ.get("DB_NAME", 'kino'),
         # 'USER': os.environ.get("DB_USER", 'myuser'),
