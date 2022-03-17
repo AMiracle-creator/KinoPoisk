@@ -3,21 +3,30 @@ on: [push]
 jobs:
 
   tests:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
+      - name: Set up python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
       - name: SetUp QEMU
         uses: docker/setup-qemu-action@v1
 
-      - name: Bash Action
-        uses: rethab/bash-action@v1
-
-      - name: Docker build
+      - name: Set up Docker buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: Run docker compose service db
-        run: docker-compose -f docker-compose.yml -p tests up --build --exit-code-from python
+      - name: Run docker database
+        run: docker-compose -f docker-compose.db.yml up --build -d
+
+      - name: Run django app Tests
+        run: |
+          python src/manage.py test main
 
 
   build:
