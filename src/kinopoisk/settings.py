@@ -84,7 +84,7 @@ DATABASES = {
         'PASSWORD': "root",
         'USER': "root",
         'HOST': "127.0.0.1",
-        "PORT": "5432"
+        "PORT": "5432",
         # 'NAME': os.environ.get("DB_NAME", 'kino'),
         # 'USER': os.environ.get("DB_USER", 'myuser'),
         # 'PASSWORD': os.environ.get("DB_PASSWORD", ''),
