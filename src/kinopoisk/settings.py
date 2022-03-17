@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'kinopoisk.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME' : "kinopoisk",
-        'PASSWORD' : "postgres",
-        'USER' : "postgres",
-        'HOST' : "db",
+        'NAME': "kinopoisk",
+        'PASSWORD': "root",
+        'USER': "root",
+        'HOST': "db",
         "PORT": "5432"
         # 'NAME': os.environ.get("DB_NAME", 'kino'),
         # 'USER': os.environ.get("DB_USER", 'myuser'),
