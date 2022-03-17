@@ -20,4 +20,7 @@ RUN python3 src/manage.py collectstatic --noinput
 ENV DEBUG False
 ENV SENTRY_ENVIRONMENT staging
 
-EXPOSE 5000
+EXPOSE 8000
+
+WORKDIR src
+CMD ["python", "manage.py" ,"test" ,"main"]

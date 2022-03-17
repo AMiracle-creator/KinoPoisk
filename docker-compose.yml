@@ -5,22 +5,20 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command:
-      bash -c "python src/manage.py test main"
     environment:
       - POSTGRES_DATABASE_NAME=kinopoisk
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_HOST=db
       - POSTGRES_PORT=5432
-      - DEBUG=True
     depends_on:
-        - db
+      - db
     ports:
-      - "3000"
+      - "3000:8000"
 
   db:
     image: postgres:11.1-alpine
+    container_name: db
     environment:
       - POSTGRES_DB=kinopoisk
       - POSTGRES_USER=postgres
@@ -28,4 +26,8 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./docker-init:/docker-entrypoint-initdb.d/
+      - db_data:/var/lib/postgresql/data/
+
+
+volumes:
+  db_data:
