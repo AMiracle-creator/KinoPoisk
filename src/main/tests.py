@@ -49,4 +49,4 @@ class MainPagesTests(TestCase):
     #     response = self.client.get(reverse('contact'))
     #
     #     self.assertEqual(response.status_code, HTTPStatus.OK)
-    #     self.assertTemplateUsed(response, 'contact.html')
+    #     self.assertTemplateUsed(response, 'contact.html')     
